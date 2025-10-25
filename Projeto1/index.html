@@ -4,28 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cadastro de Usuário da ONG</title>
-<link rel="stylesheet" href="/src/css/styles.css">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <header class="site-header" role="banner">
         <h1>Usuário da ONG</h1>
         <nav aria-label="Navegação principal">
-            <ul>
+            <div class="logo" > &#128153; Voluntários</div>
+            <button class="menu-toggle" onclick="toggleMenu()" >|||</button>
+            <ul id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projeto.html">Projetos</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="cadastro.html" class="active" >Cadastro</a></li>
             </ul>
         </nav>
     </header>
 
 
     <main id="main" role="main">
-        <section aria-labelledby="hero-title" class="hero">
-        <h1 id="hero-title">Quem somos</h1>
-        <p>Somos uma Organização sem fins lucrativos que atua com animais abandonados. Nós transformamos vidas! Conheça nossos projetos e como ajudar.</p>
-        <img src="/src/images/hero-image.jpg" alt="Imagem ilustrativa de animais resgatados pela ONG">
-        <a class="btn btn-primary" href="/projeto.html">Veja os projetos</a>
+        <section aria-labelledby="hero-title" class="hero hero-cadastro">
+            <div class="hero-content" >
+                <h1 id="hero-title">Quem somos</h1>
+                <p>Somos uma Organização sem fins lucrativos que atua com animais abandonados. Nós transformamos vidas! Conheça nossos projetos e como ajudar.</p>
+                <img src="/src/images/hero-image.jpg" alt="Imagem ilustrativa de animais resgatados pela ONG">
+                <a class="btn-primary" href="/projeto.html">Veja os projetos</a>
+
+            </div>
+        
         </section>
 
 
@@ -46,6 +52,6 @@
 <footer role="contentinfo">
     <p>&copy; 2025 ONG One for All. Todos os direitos reservados.</p>
 </footer>
-<script src="/src/js/app.js" defer></script>
+<script src="js\script.js" defer></script>
 </body>
 </html>
