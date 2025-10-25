@@ -1,7 +1,7 @@
 /*Mobile */
 function toggleMenu() {
-    const navMenu = document.getElementById('navMenu');
-    navMenu.classList.toggle('active');
+    const menu = document.getElementById('navMenu');
+    menu.classList.toggle('active');
 }
 
 /*Scroll leve */
