@@ -1,8 +1,28 @@
 // ==================== Menu Mobile ====================
+// ==================== Menu Mobile ====================
 function toggleMenu() {
     const menu = document.getElementById('navMenu');
+    const btn = document.querySelector('.menu-toggle');
+    if (!menu || !btn) return;
+
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isOpen));
     menu.classList.toggle('active');
 }
+
+// Fecha o menu ao clicar em um link (melhora usabilidade mobile)
+document.addEventListener('click', (e) => {
+    const menu = document.getElementById('navMenu');
+    const btn = document.querySelector('.menu-toggle');
+    if (!menu || !btn) return;
+
+    // se clicou em um link dentro do menu, fecha
+    if (e.target.matches('#navMenu a')) {
+        menu.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+});
+
 
 // ==================== Scroll Suave ====================
 function scrollToSection(sectionId) {
@@ -142,5 +162,16 @@ if (telefoneInput) {
     });
 }
 
-// ==================== Listener do Formulário ====================
-document.getElementById('volunteerForm').addEventListener('submit', handleSubmit);
+// Listener do formulário (só adiciona se existir)
+const volunteerForm = document.getElementById('volunteerForm');
+if (volunteerForm) {
+    volunteerForm.addEventListener('submit', handleSubmit);
+}
+
+// Máscara de telefone (já tinha verificação, ok)
+const telefoneInput = document.getElementById('telefone');
+if (telefoneInput) {
+    telefoneInput.addEventListener('input', function(e) {
+        // ... seu código de máscara aqui ...
+    });
+}

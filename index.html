@@ -9,13 +9,14 @@
 
 <body>
     <header class="site-header" role="banner">
-        <h1>Usuário da ONG</h1>
+        <h1>ONG One for All</h1>
         <nav aria-label="Navegação principal">
             <div class="logo" > &#128153; Voluntários</div>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-                <li><a href="index.html">Home</a></li>
+            <button class="menu-toggle" aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menu">☰</button>
+            <ul id="navMenu">
+                <li><a href="index.html" class="active" >Home</a></li>
                 <li><a href="projeto.html">Projetos</a></li>
-                <li><a href="cadastro.html" class="active" >Cadastro</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
             </ul>
         </nav>
     </header>
@@ -51,6 +52,6 @@
 <footer role="contentinfo">
     <p>&copy; 2025 ONG One for All. Todos os direitos reservados.</p>
 </footer>
-<script src="js\script.js" defer></script>
+<script src="js/script.js" defer></script>
 </body>
 </html>

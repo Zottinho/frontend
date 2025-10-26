@@ -18,7 +18,7 @@ body {
    Header e Navegação
    ========================== */
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #736029 0%, #575912 100%);
     color: white;
     padding: 1rem 0;
     position: fixed;
@@ -76,7 +76,7 @@ nav a {
    Hero Section - Index
    ========================== */
 .hero {
-    background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
+    background: linear-gradient(#898C1F,#898C1F),
                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/></svg>');
     background-size: cover;
     background-position: center;
@@ -205,6 +205,55 @@ form legend {
 
 .form-group {
     margin-bottom: 1rem;
+}
+
+/* estilo do botão (padrão desktop escondido) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* comportamento mobile */
+@media (max-width: 768px) {
+    nav {
+        padding: 0 1rem;
+        position: relative;
+    }
+
+    /* exibe botão no mobile */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* esconde lista por padrão e transforma em coluna quando aberta */
+    nav ul {
+        display: none;              /* escondido por padrão no mobile */
+        position: absolute;
+        top: 100%;
+        right: 1rem;
+        background: rgba(0,0,0,0.85);
+        padding: 1rem;
+        border-radius: 8px;
+        flex-direction: column;
+        gap: 0.5rem;
+        min-width: 160px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        color: #fff;
+    }
+
+    /* quando a classe active está presente, mostra o menu */
+    nav ul.active {
+        display: flex;
+    }
 }
 
 
