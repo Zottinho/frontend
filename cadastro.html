@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="site-header" role="banner">
+    <header>
         <h1>Usuário da ONG</h1>
         <nav aria-label="Navegação principal">
             <div class="logo" > &#128153; Voluntários</div>
-            <button class="menu-toggle" onclick="toggleMenu()" >|||</button>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul id="navMenu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projeto.html">Projetos</a></li>
@@ -18,6 +19,12 @@
             </ul>
         </nav>
     </header>
+    <section class="hero hero-cadastro">
+        <div class="hero-content">
+            <h1>Cadastre-se como Voluntário</h1>
+            <p>Junte-se a nós e faça a diferença na vida de muitas pessoas através do voluntariado.</p>
+        </div>
+    </section>
 <!-- Formulário de Cadastro -->
     <main>
         <section class="signup-section">
@@ -95,8 +102,10 @@
 
         </section>
     </main>
+
     <footer>
         <p>&copy; 2025 ONG One for All. Todos os direitos reservados.</p>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
