@@ -1,5 +1,4 @@
 // ==================== Menu Mobile ====================
-// ==================== Menu Mobile ====================
 function toggleMenu() {
     const menu = document.getElementById('navMenu');
     const btn = document.querySelector('.menu-toggle');
@@ -16,13 +15,13 @@ document.addEventListener('click', (e) => {
     const btn = document.querySelector('.menu-toggle');
     if (!menu || !btn) return;
 
-    // se clicou em um link dentro do menu, fecha
-    if (e.target.matches('#navMenu a')) {
+    // usa closest para caso o alvo seja um elemento interno do link
+    const link = e.target.closest('#navMenu a');
+    if (link) {
         menu.classList.remove('active');
         btn.setAttribute('aria-expanded', 'false');
     }
 });
-
 
 // ==================== Scroll Suave ====================
 function scrollToSection(sectionId) {
@@ -36,16 +35,17 @@ function scrollToSection(sectionId) {
 
     // Fecha o menu mobile após clicar
     const menu = document.getElementById('navMenu');
-    menu.classList.remove('active');
+    if (menu) menu.classList.remove('active');
 }
 
 // ==================== Cadastro ====================
 function handleSubmit(event) {
     event.preventDefault();
     const form = document.getElementById('volunteerForm');
+    if (!form) return;
 
-    const nome = form.nome.value.trim();
-    const email = form.email.value.trim();
+    const nome = form.nome?.value.trim() || '';
+    const email = form.email?.value.trim() || '';
 
     // Verifica campos obrigatórios
     if (!nome || !email) {
@@ -57,30 +57,32 @@ function handleSubmit(event) {
     const formData = {
         nome,
         email,
-        telefone: form.telefone.value.trim(),
-        idade: form.idade.value.trim(),
-        disponibilidade: form.disponibilidade.value.trim(),
-        areaInteresse: form['area-interesse'].value.trim(),
-        experiencia: form.experiencia.value.trim(),
-        motivacao: form.motivacao.value.trim(),
+        telefone: form.telefone?.value.trim() || '',
+        idade: form.idade?.value.trim() || '',
+        disponibilidade: form.disponibilidade?.value.trim() || '',
+        areaInteresse: form['area-interesse']?.value.trim() || '',
+        experiencia: form.experiencia?.value.trim() || '',
+        motivacao: form.motivacao?.value.trim() || '',
         dataCadastro: new Date().toLocaleString()
     };
 
     // Recupera cadastros anteriores ou cria lista vazia
-    let voluntarios = JSON.parse(localStorage.getItem('voluntarios')) || [];
+    let voluntarios = JSON.parse(localStorage.getItem('voluntarios') || '[]');
     voluntarios.push(formData);
     localStorage.setItem('voluntarios', JSON.stringify(voluntarios));
 
-    // Mostra mensagem de sucesso
+    // Mostra mensagem de sucesso (se existir)
     const successMessage = document.getElementById('successMessage');
-    successMessage.classList.add('show');
-    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (successMessage) {
+        successMessage.classList.add('show');
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Esconde mensagem após 5 segundos
+        setTimeout(() => successMessage.classList.remove('show'), 5000);
+    }
 
     // Limpa formulário após 2 segundos
     setTimeout(() => form.reset(), 2000);
-
-    // Esconde mensagem após 5 segundos
-    setTimeout(() => successMessage.classList.remove('show'), 5000);
 
     // Atualiza a tabela de voluntários
     exibirVoluntarios();
@@ -166,12 +168,4 @@ if (telefoneInput) {
 const volunteerForm = document.getElementById('volunteerForm');
 if (volunteerForm) {
     volunteerForm.addEventListener('submit', handleSubmit);
-}
-
-// Máscara de telefone (já tinha verificação, ok)
-const telefoneInput = document.getElementById('telefone');
-if (telefoneInput) {
-    telefoneInput.addEventListener('input', function(e) {
-        // ... seu código de máscara aqui ...
-    });
 }

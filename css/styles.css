@@ -1,4 +1,19 @@
 
+:root{
+  /* Paleta e tokens */
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --muted: #6b7280;
+  --text: #0f172a;
+  --primary: #05C7F2;
+  --primary-2: #03588C;
+  --accent: #5eead4;
+  --glass: rgba(255,255,255,0.6);
+  --radius: 12px;
+  --shadow-1: 0 4px 18px rgba(16,24,40,0.06);
+  --shadow-2: 0 10px 30px rgba(16,24,40,0.10);
+  --max-width: 1200px;
+}
 
 * {
     margin: 0;
@@ -7,18 +22,24 @@
 }
 
 
+html { font-size: 16px; }
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
+  font-family: "Inter", 'Segoe UI', Tahoma, system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+h1 { font-size: clamp(1.5rem, 2.5vw + 1rem, 2.6rem); line-height: 1.05; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.05rem, 1.2vw + 0.9rem, 1.25rem); }
 
 
 /* ==========================
    Header e Navegação
    ========================== */
 header {
-    background: linear-gradient(135deg, #736029 0%, #575912 100%);
+    background: linear-gradient(135deg, #D97A07 00%, #D97A07 100%);
     color: white;
     padding: 1rem 0;
     position: fixed;
@@ -39,11 +60,15 @@ nav {
 }
 
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+.logo { display:flex; gap:.5rem; align-items:center; font-weight:800; color:var(--primary-2); }
+nav ul li a {
+  position: relative;
+  padding: .35rem .45rem;
+  color: var(--text);
+  text-decoration: none;
+  opacity: .92;
+  transition: transform .12s ease, opacity .12s ease;
 }
-
 
 nav ul {
     display: flex;
@@ -76,7 +101,7 @@ nav a {
    Hero Section - Index
    ========================== */
 .hero {
-    background: linear-gradient(#898C1F,#898C1F),
+    background: linear-gradient(#03588C,#07DBF2),
                 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/></svg>');
     background-size: cover;
     background-position: center;
@@ -91,7 +116,7 @@ nav a {
 
 
 .hero-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #A6034F 0%, #764ba2 100%);
     padding: 8rem 2rem 4rem;
     text-align: center;
     color: white;
@@ -106,6 +131,12 @@ nav a {
     animation: fadeInUp 1s ease-out;
 }
 
+.contact {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: left;
+}
 
 .hero h1,
 .hero-page h1 {
@@ -121,8 +152,35 @@ nav a {
     margin-bottom: 2rem;
 }
 
+.destaques p {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    line-height: 1.6;
 
 
+}
+
+.hero-list {
+  padding-left: 1.05rem;
+  margin: .6rem 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.hero-list li {
+  margin-bottom: .6rem;
+  font-weight: 500;
+}
+/* personaliza o marcador (apenas cores/tamanho) */
+.hero-list li::marker {
+  color: var(--primary-2);
+  font-size: 1.15em;
+}
+
+
+
+
+
+h2{ font-size: 1.125rem; margin-bottom: .5rem; color: var(--text); }
 .cta-buttons {
     display: flex;
     flex-direction: row; /* lado a lado */
@@ -152,13 +210,13 @@ nav a {
 
 
 .btn-primary {
-    background: #667eea;
+    background: #A6034F;
     color: white;
 }
 
 
 .btn-secondary {
-    background: #764ba2;
+    background: #03588C;
     color: white;
 }
 
@@ -173,8 +231,8 @@ nav a {
     content: '';
     position: absolute;
     top: -50%;
-    left: -50%;
-    width: 200%;
+    left: -100%;
+    width: 300%;
     height: 200%;
     background: rgba(255,255,255,0.15);
     transform: rotate(45deg);
